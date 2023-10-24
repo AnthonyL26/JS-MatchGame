@@ -6,18 +6,15 @@ class Card {
         var element = document.createElement("div");
         element.style.backgroundColor = this.color;
         element.innerHTML = "‎ R";
-        element.onclick = switchColor(this);
+        element.onclick = this.switchColor();
         return element;
+    }
+    switchColor() {
+        this.getElement.style.backgroundColor = "blue";
     }
 }
 
-function switchColor(card) {
-    var tmp = card.backgroundColor;
-    var fro = "blue";
-    card.backgroundColor = tmp;
-    tmp = fro;
-    fro = card;
-}
+
 // Color Pairs: red, blue, yellow, green, Orange, purple, Cyan, pink
 
 function initialize() {
