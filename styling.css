@@ -1,20 +1,24 @@
 body {
   text-align: center;
+  background-color: black;
 }
 #container {
     display: grid;
+    margin: auto;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 100px 100px 100px 100px;
+    aspect-ratio: 1;
+    width: 40%;
 }
 
 #container > div {
+  border-radius: 25%;
   align-items: center;
-  border: solid grey thin;
   color: white;
-  display: flex;
-  font-size: 2em;
-  justify-content: center;
+  margin: 10px;
 }
 
+h1 {
+  color: white;
+}
 
   
