@@ -11,9 +11,17 @@
 <body onload = "initialize()">
     <h1>MatchGame</h1>
 
-    <div>
-    <button onclick = "changeText()"> ? </button>
-    <p id = "info" style> This game is a game where you game </p>
+    <button id = "infoButton"> Click Me </button>
+    <div id="myPopup" class="popup">
+        <div class="popup-content">
+            <h1 style="color:green;">
+                  GeekforGeeks !
+              </h1>
+            <p>This is a popup box!</p>
+            <button id="closePopup">
+                  Close
+              </button>
+        </div>
     </div>
 
     <div id = "container">
