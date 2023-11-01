@@ -66,3 +66,9 @@ a {
 p {
   color:white;
 }
+
+#win {
+  color:white;
+  font-size: 200px;
+  padding: 50px;
+}

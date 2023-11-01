@@ -16,12 +16,12 @@ class Card {
 }
 
 function initialize() {
-    
     for (let i = 0; i < 16; i++) {
         var newCard = new Card("white", colors[i], i);
         document.getElementById("container").append(newCard.createElement());
     }
 }
+
 // Color Pairs: red, blue, yellow, green, Orange, purple, Cyan, pink
 var colors = ["red", "red", "blue", "blue", "yellow", "yellow", "green", "green", "orange", "orange", "purple", "purple", "cyan", "cyan", "pink", "pink"];
 let divs = [null, null];
@@ -38,42 +38,51 @@ function switchColor(card) {
 }
 
 function recordClick(card) {
-    clicks++;
     if (card.style.backgroundColor != "white") {
         if (divs[0] == null ) {
             divs[0] = card;
-        } else if (divs[0] == card){
         }
         else if (divs[1] == null) {
             divs[1] = card;
             tryMatch();
         }
+        
+    } else {
+        if (divs[0] == card) {
+            divs[0] = null;
+        }
     }
+    console.log(card);
+    console.log(divs);
 }
+
 function calcScore() {
     let score = parseInt(document.getElementById("scoreNum").innerHTML);
     score += 1000/clicks;
-    document.getElementById("scoreNum").innerHTML = score;
+    document.getElementById("scoreNum").innerHTML = Math.ceil(score);
     clicks = 0;
 }
+
 function tryMatch() {
+    clicks++;
     let card1Id = divs[0].getAttribute("id")
     let card2Id = divs[1].getAttribute("id")
-    if (divs[1].style.backgroundColor == divs[0].style.backgroundColor) {
-        divs[0].style.backgroundColor = "black";
-        divs[0].setAttribute("onclick", "")
-        divs[1].style.backgroundColor = "black";
-        divs[1].setAttribute("onclick", "")
-        console.log(1);
-        calcScore();
-        checkWin();
-    } else {
-        var allDivs = document.querySelectorAll("#container > div");
+    var allDivs = document.querySelectorAll("#container > div");
         allDivs.forEach(div => {
             if (div.style.backgroundColor != "black") {
                 div.setAttribute("onclick", " ");
             }  
         })
+    if (divs[1].style.backgroundColor == divs[0].style.backgroundColor) {
+        setTimeout(() => {
+            divs[0].style.backgroundColor = "black";
+            divs[0].setAttribute("onclick", "")
+            divs[1].style.backgroundColor = "black";
+            divs[1].setAttribute("onclick", "")
+            calcScore();
+            checkWin();
+        }, 1000)
+    } else {
         setTimeout(() => {
             divs[1].style.backgroundColor = "white";
             divs[0].style.backgroundColor = "white";
@@ -92,15 +101,17 @@ function tryMatch() {
 function checkWin() {
     var allDivs = document.querySelectorAll("#container > div");
     let done = true;
-        allDivs.forEach(div => {
-            if (div.style.backgroundColor == "white") {
-                done = false;
-                console.log(done);
-            }  
-        })
+    allDivs.forEach(div => {
+        if (div.style.backgroundColor == "white") {
+            done = false;
+        }
+    });
+    if (done) {
+        document.getElementById("container").innerHTML = "You Win!";
+        document.getElementById("container").setAttribute("id", "win");
+    }
+
 }
-
-
 
 var popButton = document.getElementById("infoButton");
 var popUp = document.getElementById("myBox");
