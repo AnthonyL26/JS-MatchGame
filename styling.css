@@ -21,4 +21,48 @@ h1 {
   color: white;
 }
 
-  
+.popUpBox{
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(245, 237, 237); /* Fallback color */
+  background-color: rgba(255, 254, 254, 0.4); 
+}
+
+.textContent{
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+
+}
+
+.close{
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(253, 247, 247);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a {
+  color:white;
+}
+
+p {
+  color:white;
+}

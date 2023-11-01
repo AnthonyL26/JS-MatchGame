@@ -16,10 +16,7 @@ class Card {
 }
 
 function initialize() {
-    gameDescription = document.getElementById("info");
-    document.getElementById("info").style.display = "none";
     
-
     for (let i = 0; i < 16; i++) {
         var newCard = new Card("white", colors[i], i);
         document.getElementById("container").append(newCard.createElement());
@@ -28,6 +25,7 @@ function initialize() {
 // Color Pairs: red, blue, yellow, green, Orange, purple, Cyan, pink
 var colors = ["red", "red", "blue", "blue", "yellow", "yellow", "green", "green", "orange", "orange", "purple", "purple", "cyan", "cyan", "pink", "pink"];
 let divs = [null, null];
+let clicks = 0;
 
 function switchColor(card) {
     let cardId = card.getAttribute("id")
@@ -40,12 +38,23 @@ function switchColor(card) {
 }
 
 function recordClick(card) {
-    if (divs[0] == null) {
-        divs[0] = card;
-    } else if (divs[1] == null) {
-        divs[1] = card;
-        tryMatch();
+    clicks++;
+    if (card.style.backgroundColor != "white") {
+        if (divs[0] == null ) {
+            divs[0] = card;
+        } else if (divs[0] == card){
+        }
+        else if (divs[1] == null) {
+            divs[1] = card;
+            tryMatch();
+        }
     }
+}
+function calcScore() {
+    let score = parseInt(document.getElementById("scoreNum").innerHTML);
+    score += 1000/clicks;
+    document.getElementById("scoreNum").innerHTML = score;
+    clicks = 0;
 }
 function tryMatch() {
     let card1Id = divs[0].getAttribute("id")
@@ -56,13 +65,57 @@ function tryMatch() {
         divs[1].style.backgroundColor = "black";
         divs[1].setAttribute("onclick", "")
         console.log(1);
+        calcScore();
+        checkWin();
     } else {
-        setTimeout(function() {divs[0].style.backgroundColor ="white"}, 2000);
-        setTimeout(function() {divs[1].style.backgroundColor ="white"}, 2000);
-        console.log(colors[card1Id]);
+        var allDivs = document.querySelectorAll("#container > div");
+        allDivs.forEach(div => {
+            if (div.style.backgroundColor != "black") {
+                div.setAttribute("onclick", " ");
+            }  
+        })
+        setTimeout(() => {
+            divs[1].style.backgroundColor = "white";
+            divs[0].style.backgroundColor = "white";
+        },1000);
     }
-    divs = [null, null];
+    setTimeout(() => {
+        divs = [null, null];
+        allDivs.forEach(div => {
+            if (div.style.backgroundColor != "black") {
+                div.setAttribute("onclick", "switchColor(this)");
+            }  
+        })
+    },1000);
 }
 
-infoButton.addEventListener("click", function{myPopup.classList.add("show")});
-closePopup.addEventListener("click", function(){ myPopup.classList.remove("show")});
+function checkWin() {
+    var allDivs = document.querySelectorAll("#container > div");
+    let done = true;
+        allDivs.forEach(div => {
+            if (div.style.backgroundColor == "white") {
+                done = false;
+                console.log(done);
+            }  
+        })
+}
+
+
+
+var popButton = document.getElementById("infoButton");
+var popUp = document.getElementById("myBox");
+var span = document.getElementsByClassName("close")[0];
+popButton.onclick = function(){
+    popUp.style.display = "none";
+}
+span.onclick = function(){
+    popUpBox.style.display = "none";
+}
+window.onclick = function(event){
+    if (event.target == popUp){
+        modal.style.display = "none";
+    }
+}
+
+
+

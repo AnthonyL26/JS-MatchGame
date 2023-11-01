@@ -11,25 +11,27 @@
 <body onload = "initialize()">
     <h1>MatchGame</h1>
 
+    <!--Open the info box-->
     <button id = "infoButton"> Click Me </button>
-    <div id="myPopup" class="popup">
-        <div class="popup-content">
-            <h1 style="color:green;">
-                  GeekforGeeks !
-              </h1>
-            <p>This is a popup box!</p>
-            <button id="closePopup">
-                  Close
-              </button>
+
+    <!--the box-->
+    <div id = "myBox" class="popUpBox" >
+
+        <!--content in the popup-->
+        <div class = "text-Content">
+            <span class = "close">&times;</span>
+            <p>Welcome to the game Bla bla bla </p>
         </div>
     </div>
 
-    <div id = "container">
-    </div>
+
+    <div id = "container"></div>
 
     <div id = "bottom">
         <button onclick = "">Reset</button>
-        <a>Score: <span id = "scoreNum"></span></a>
+        <a>   Score: <span id = "scoreNum">0</span></a>
     </div>
+
+
 </body>
 </html>
