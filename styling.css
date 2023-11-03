@@ -4,10 +4,10 @@ body {
 }
 #container {
     display: grid;
-    margin: auto;
+    margin: 0px auto;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     aspect-ratio: 1;
-    width: 40%;
+    width: 35%;
 }
 
 #container > div {
@@ -19,42 +19,46 @@ body {
 
 h1 {
   color: white;
+  font-size: 50px;
+  margin-bottom: 10px;
+  margin-top: 20px;
 }
 
-.popUpBox{
+/* The Modal (background) */
+.modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(245, 237, 237); /* Fallback color */
-  background-color: rgba(255, 254, 254, 0.4); 
+  background-color: rgb(255, 255, 255); /* Fallback color */
+  background-color: rgba(255, 255, 255, 0.4); /* Black w/ opacity */
 }
 
-.textContent{
+/* Modal Content/Box */
+.modal-content {
   background-color: #fefefe;
-  margin: auto;
+  margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
-
+  width: 40%; /* Could be more or less, depending on screen size */
+  border-radius: 10px;
 }
 
-.close{
-  color: #aaaaaa;
+/* The Close Button */
+.close {
+  color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
-
 }
 
 .close:hover,
 .close:focus {
-  color: rgb(253, 247, 247);
+  color: black;
   text-decoration: none;
   cursor: pointer;
 }
@@ -64,11 +68,52 @@ a {
 }
 
 p {
-  color:white;
+  color:rgb(5, 5, 5);
 }
 
 #win {
   color:white;
-  font-size: 200px;
+  font-size: 100px;
   padding: 50px;
+}
+
+.button-1 {
+  background-color: #ffffff;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 10px;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-1:hover {
+  background-color: #a3a3a3;
+}
+
+#score {
+  padding: 20px;
+}
+
+@media (max-width: 900px) {
+  #container {
+      width: 90%;
+  }
+
 }
